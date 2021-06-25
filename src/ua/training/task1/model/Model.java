@@ -10,4 +10,8 @@ public class Model {
     public void setValue(String value){
         this.value = value;
     }
+
+    public void Append(String text){
+        value += text;
+    }
 }

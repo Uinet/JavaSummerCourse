@@ -17,28 +17,19 @@ public class Controller {
 
     public void process(){
         Scanner scanner = new Scanner(System.in);
-        model.setValue(inputStringValue(scanner));
-        view.printMessage("Result: ");
+        model.setValue(inputStringValueWithScanner(scanner, View.INPUT_FIRST_WORD, View.HELLO_WORD));
+        model.Append(" ");
+        model.Append(inputStringValueWithScanner(scanner, View.INPUT_SECOND_WORD, View.WORLD_WORD));
+        view.printMessage(View.SUCCESSFUL_OPERATION);
         view.printMessage(model.getValue());
     }
 
-    public String inputStringValue(Scanner scanner){
-        StringBuilder stringBuilder = new StringBuilder();
-        view.printMessage(View.INPUT_FIRST_WORD);
-        while( !scanner.hasNext(View.HELLO_WORD)) {
-            view.printMessage(View.WRONG_INPUT_DATA + " " + View.INPUT_FIRST_WORD);
+    public String inputStringValueWithScanner(Scanner scanner, String message, String pattern){
+        view.printMessage(message);
+        while( !scanner.hasNext(pattern)) {
+            view.printMessage(View.WRONG_INPUT_DATA + " " + message);
             scanner.next();
         }
-        stringBuilder.append(scanner.next());
-        stringBuilder.append(" ");
-
-        view.printMessage(View.INPUT_SECOND_WORD);
-        while( !scanner.hasNext(View.WORLD_WORD)) {
-            view.printMessage(View.WRONG_INPUT_DATA + " " + View.INPUT_SECOND_WORD);
-            scanner.next();
-        }
-        stringBuilder.append(scanner.next());
-
-        return stringBuilder.toString();
+        return scanner.next();
     }
 }
