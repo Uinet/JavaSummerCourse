@@ -1,4 +1,4 @@
-package ua.training.task1.view;
+package ua.training.main.task1.view;
 
 public class View {
     public static final String INPUT_FIRST_WORD = "Please enter the first word:";

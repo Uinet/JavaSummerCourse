@@ -1,7 +1,7 @@
-package ua.training.task1.controller;
+package ua.training.main.task1.controller;
 
-import ua.training.task1.model.Model;
-import ua.training.task1.view.View;
+import ua.training.main.task1.model.Model;
+import ua.training.main.task1.view.View;
 
 import java.util.Scanner;
 

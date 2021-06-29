@@ -1,4 +1,4 @@
-package ua.training.task2;
+package ua.training.main.task2;
 
 import java.util.Scanner;
 

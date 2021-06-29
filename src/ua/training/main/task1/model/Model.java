@@ -1,4 +1,4 @@
-package ua.training.task1.model;
+package ua.training.main.task1.model;
 
 public class Model {
     private String value;
