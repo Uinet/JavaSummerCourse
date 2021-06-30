@@ -5,22 +5,31 @@ import java.util.ArrayList;
 public class Model {
     private int upperLimit;
     private int lowerLimit;
+
     private int secretNumber;
+
     private ArrayList<Integer> attempts;
 
     public Model(){
-        upperLimit = 100;
-        lowerLimit = 0;
-        secretNumber = (int)(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
         attempts = new ArrayList<>();
     }
 
-    public int checkNumber(int number){
+    public int generateSecretNumber(){
+        secretNumber = (int)Math.ceil(Math.random()*
+                (upperLimit - lowerLimit - 1) + lowerLimit);
+        return secretNumber;
+    }
+
+    public boolean checkNumber(int number){
         attempts.add(number);
-        int compareResult = Integer.compare(number, secretNumber);
-        lowerLimit = compareResult == -1 ? number : lowerLimit;
-        upperLimit = compareResult == 1 ? number : upperLimit;
-        return compareResult;
+        if(number == secretNumber){
+            return true;
+        } else if(number > secretNumber){
+            upperLimit = number;
+        }else {
+            lowerLimit = number;
+        }
+        return false;
     }
 
     public int getUpperLimit(){
@@ -29,6 +38,18 @@ public class Model {
 
     public int getLowerLimit(){
         return lowerLimit;
+    }
+
+    public void setUpperLimit(int upperLimit) {
+        this.upperLimit = upperLimit;
+    }
+
+    public void setLowerLimit(int lowerLimit) {
+        this.lowerLimit = lowerLimit;
+    }
+
+    public int getSecretNumber(){
+        return secretNumber;
     }
 
     public ArrayList<Integer> getAttempts() {

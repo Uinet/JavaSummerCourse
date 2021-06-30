@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class View {
     public static final String WRONG_INPUT_DATA = "Wrong input data! ";
     public static final String ENTER_NUMBER = "Enter number between %d and %d:";
-    public static final String WINNER_MESSAGE = "Congratulations, you have guessed the secret number";
+    public static final String WINNER_MESSAGE = "Congratulations, secret number = %d";
     public static final String PAST_ATTEMPTS = "Past attempts: ";
     public static final String NUMBER_IS_GREATER = "The entered number is greater than the secret. Secret number between %d and %d";
     public static final String NUMBER_IS_LESS = "The entered number is less than the secret. Secret number between %d and %d";

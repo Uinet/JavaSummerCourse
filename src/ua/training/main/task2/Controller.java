@@ -13,27 +13,44 @@ public class Controller {
 
     public void process(){
         Scanner scanner = new Scanner(System.in);
-        int checkResult;
-        do{
-            checkResult = model.checkNumber(inputIntValueWithScanner(scanner));
-            if(checkResult > 0){
-                view.printMessage(String.format(View.NUMBER_IS_GREATER, model.getLowerLimit(), model.getUpperLimit()));
-            } else if(checkResult < 0){
-                view.printMessage(String.format(View.NUMBER_IS_LESS, model.getLowerLimit(), model.getUpperLimit()));
-            }
-        }
-        while (checkResult != 0);
 
-        view.printMessage(View.WINNER_MESSAGE);
+        model.setLowerLimit(GlobalConstant.DEFAULT_LOWER_LIMIT);
+        model.setUpperLimit(GlobalConstant.DEFAULT_UPPER_LIMIT);
+
+        model.generateSecretNumber();
+
+        while (!model.checkNumber(inputIntValueWithScanner(scanner)));
+
+        view.printMessage(String.format(View.WINNER_MESSAGE,
+                model.getSecretNumber()));
         view.printPastAttempts(model.getAttempts());
     }
 
     public int inputIntValueWithScanner(Scanner sc){
-        view.printMessage(String.format(View.ENTER_NUMBER, model.getLowerLimit(), model.getUpperLimit()));
-        while( ! sc.hasNextInt()) {
-            view.printMessage(View.WRONG_INPUT_DATA + View.ENTER_NUMBER);
-            sc.next();
+        int res = 0;
+
+        view.printMessage(String.format(View.ENTER_NUMBER, model.getLowerLimit(),
+                model.getUpperLimit()));
+
+        while (true){
+            while( ! sc.hasNextInt()) {
+                view.printMessage(View.WRONG_INPUT_DATA + View.ENTER_NUMBER);
+                sc.next();
+            }
+
+            if((res = sc.nextInt()) <= model.getLowerLimit()){
+                view.printMessage(String.format(View.NUMBER_IS_LESS,
+                        model.getLowerLimit(), model.getUpperLimit()));
+                continue;
+            }
+            if (res >= model.getUpperLimit()){
+                view.printMessage(String.format(View.NUMBER_IS_GREATER,
+                        model.getLowerLimit(), model.getUpperLimit()));
+                continue;
+            }
+            break;
         }
-        return sc.nextInt();
+
+        return res;
     }
 }
