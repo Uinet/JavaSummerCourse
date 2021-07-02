@@ -22,4 +22,29 @@ public class ModelTest {
         Assert.assertTrue(res);
     }
 
+    @Test
+    public void testSecretNumberNotEqualUpperLimit(){
+        for(int i = 0; i < 10000; i++){
+            Assert.assertNotEquals(GlobalConstant.DEFAULT_UPPER_LIMIT,
+                    model.generateSecretNumber());
+        }
+    }
+
+    @Test
+    public void testSecretNumberNotEqualLowerLimit(){
+        for(int i = 0; i < 10000; i++){
+            Assert.assertNotEquals(GlobalConstant.DEFAULT_LOWER_LIMIT,
+                    model.generateSecretNumber());
+        }
+    }
+
+    @Test
+    public void secretNumberBetweenLimits(){
+        for (int i = 0; i < 10000; i++){
+            int secretNumber = model.generateSecretNumber();
+            Assert.assertTrue(model.getLowerLimit() < secretNumber
+                    && model.getUpperLimit() > secretNumber);
+        }
+    }
+
 }
