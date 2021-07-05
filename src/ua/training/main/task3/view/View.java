@@ -1,5 +1,9 @@
 package ua.training.main.task3.view;
 
+/**
+ * The view renders presentation of the model in a particular format.
+ * @author Maltsev Dmytro
+ */
 public class View {
     public static final String INPUT_SURNAME = "Enter your surname: ";
     public static final String INPUT_NAME = "Enter your name: ";
@@ -17,7 +21,10 @@ public class View {
     public static final String INPUT_FLAT_NUMBER = "Enter your house number: ";
     public static final String WRONG_INPUT_DATA = "Wrong input data! ";
 
-
+    /**
+     * This method encapsulates the output of a message to the console
+     * @param message - message to output to the console
+     */
     public void printMessage(String message){
         System.out.println(message);
     }
