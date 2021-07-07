@@ -24,5 +24,10 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
         InputNoteBook inputNoteBook = new InputNoteBook(scanner, view);
         inputNoteBook.inputNote();
+
+        model.setNickname(inputNoteBook.getNickName());
+        model.setSurname(inputNoteBook.getSurname());
+
+        view.printMessage(model.toString());
     }
 }

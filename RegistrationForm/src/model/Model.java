@@ -22,7 +22,7 @@ public class Model {
 
     @Override
     public String toString() {
-        return " surname='" + surname + '\'' +
+        return "surname='" + surname + '\'' +
                 ", nickname='" + nickname + '\'';
     }
 }

@@ -1,8 +1,5 @@
 package view;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import static view.TextConstant.INPUT_STRING_DATA;
 import static view.TextConstant.WRONG_INPUT_DATA;
 
@@ -11,11 +8,7 @@ import static view.TextConstant.WRONG_INPUT_DATA;
  * @author Maltsev Dmytro
  */
 public class View {
-    static String MESSAGE_BUNDLE_NAME = "messages";
-    public static final ResourceBundle bundle =
-            ResourceBundle.getBundle(MESSAGE_BUNDLE_NAME,
-                    new Locale("ua", "UA"));
-                    //new Locale("en"));
+    public static final MessageManager messageManager = MessageManager.UA;
 
     /**
      * This method encapsulates the output of a message to the console
@@ -26,22 +19,19 @@ public class View {
     }
 
     private String concatenateStrings(String ... strings){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String str: strings) {
-            stringBuilder.append(str);
-            stringBuilder.append(" ");
-        }
-        return stringBuilder.toString();
+        return String.join(" ", strings);
     }
 
     public void printWrongMessage(String message){
-        printMessage(concatenateStrings(bundle.getString(WRONG_INPUT_DATA)
-                ,bundle.getString(INPUT_STRING_DATA)
-                ,bundle.getString(message)));
+        printMessage(concatenateStrings(
+                messageManager.getString(WRONG_INPUT_DATA),
+                messageManager.getString(INPUT_STRING_DATA),
+                messageManager.getString(message)));
     }
 
     public void printStringInput(String message){
-        printMessage(concatenateStrings(bundle.getString(INPUT_STRING_DATA)
-                ,bundle.getString(message)));
+        printMessage(concatenateStrings(
+                messageManager.getString(INPUT_STRING_DATA),
+                messageManager.getString(message)));
     }
 }
