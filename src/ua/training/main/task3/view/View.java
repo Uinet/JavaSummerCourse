@@ -1,25 +1,21 @@
 package ua.training.main.task3.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import static ua.training.main.task3.view.TextConstant.INPUT_STRING_DATA;
+import static ua.training.main.task3.view.TextConstant.WRONG_INPUT_DATA;
+
 /**
  * The view renders presentation of the model in a particular format.
  * @author Maltsev Dmytro
  */
 public class View {
-    public static final String INPUT_SURNAME = "Enter your surname: ";
-    public static final String INPUT_NAME = "Enter your name: ";
-    public static final String INPUT_NICKNAME = "Enter your nickname: ";
-    public static final String INPUT_PATRONYMIC = "Enter your patronymic: ";
-    public static final String INPUT_COMMENT = "Enter comment: ";
-    public static final String INPUT_HOME_PHONE = "Enter your home phone: ";
-    public static final String INPUT_MOBILE_PHONE = "Enter your mobile phone: ";
-    public static final String INPUT_EMAIL = "Enter your email: ";
-    public static final String INPUT_SKYPE = "Enter your Skype login: ";
-    public static final String INPUT_POST_INDEX = "Enter your post index: ";
-    public static final String INPUT_CITY = "Enter your city: ";
-    public static final String INPUT_STREET = "Enter your street: ";
-    public static final String INPUT_HOUSE_NUMBER = "Enter your house number: ";
-    public static final String INPUT_FLAT_NUMBER = "Enter your house number: ";
-    public static final String WRONG_INPUT_DATA = "Wrong input data! ";
+    static String MESSAGE_BUNDLE_NAME = "messages";
+    public static final ResourceBundle bundle =
+            ResourceBundle.getBundle(MESSAGE_BUNDLE_NAME,
+                    //new Locale("ua", "UA"));
+                    new Locale("en"));
 
     /**
      * This method encapsulates the output of a message to the console
@@ -27,5 +23,25 @@ public class View {
      */
     public void printMessage(String message){
         System.out.println(message);
+    }
+
+    private String concatenateStrings(String ... strings){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String str: strings) {
+            stringBuilder.append(str);
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString();
+    }
+
+    public void printWrongMessage(String message){
+        printMessage(concatenateStrings(bundle.getString(WRONG_INPUT_DATA)
+                ,bundle.getString(INPUT_STRING_DATA)
+                ,bundle.getString(message)));
+    }
+
+    public void printStringInput(String message){
+        printMessage(concatenateStrings(bundle.getString(INPUT_STRING_DATA)
+                ,bundle.getString(message)));
     }
 }
