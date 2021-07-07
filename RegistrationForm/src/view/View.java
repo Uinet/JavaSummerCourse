@@ -8,7 +8,9 @@ import static view.TextConstant.WRONG_INPUT_DATA;
  * @author Maltsev Dmytro
  */
 public class View {
-    public static final MessageManager messageManager = MessageManager.UA;
+    public static final MessageManager messageManager =
+            MessageManager.EN;
+            //MessageManager.UA;
 
     /**
      * This method encapsulates the output of a message to the console
