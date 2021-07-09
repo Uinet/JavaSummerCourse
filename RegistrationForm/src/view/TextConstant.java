@@ -6,4 +6,5 @@ public interface TextConstant {
     String FIRST_NAME_DATA = "input.first.name.data";
     String WRONG_INPUT_DATA = "input.wrong.data";
     String NICK_NAME_DATA = "input.nick.name.data";
+    String NOT_UNIQUE_NICKNAME = "input.nick.name.not.unique";
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import model.entity.NotUniqueException;
+import model.entity.NoteBook;
 import view.View;
 import model.Model;
 
@@ -25,9 +27,25 @@ public class Controller {
         InputNoteBook inputNoteBook = new InputNoteBook(scanner, view);
         inputNoteBook.inputNote();
 
-        model.setNickname(inputNoteBook.getNickName());
-        model.setSurname(inputNoteBook.getSurname());
+        System.out.println(getNoteBook(inputNoteBook));
 
-        view.printMessage(model.toString());
+    }
+
+    private NoteBook getNoteBook(InputNoteBook inputNoteBook){
+        NoteBook noteBook = null;
+        while (true){
+            try {
+                noteBook = new NoteBook(inputNoteBook.getSurname(),
+                        inputNoteBook.getNickName());
+                break;
+            }
+            catch (NotUniqueException ex){
+                ex.printStackTrace();
+                System.out.println(inputNoteBook.getNickName() +
+                        " is not unique! Enter new nickname");
+                inputNoteBook.inputNickName();
+            }
+        }
+        return noteBook;
     }
 }

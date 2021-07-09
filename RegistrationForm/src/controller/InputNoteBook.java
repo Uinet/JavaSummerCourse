@@ -21,15 +21,24 @@ public class InputNoteBook {
         this.view = view;
     }
 
-    public void inputNote(){
+    public void inputSurname(){
         UtilityController utilityController =
                 new UtilityController(scanner, view);
 
         String str = (View.messageManager.equals(MessageManager.UA))
                 ? REG_SURNAME_UKR : REG_SURNAME;
-
         this.surname = utilityController.inputStringValueWithScanner(SURNAME_DATA, str);
+    }
+
+    public void inputNickName(){
+        UtilityController utilityController =
+                new UtilityController(scanner, view);
         this.nickName = utilityController.inputStringValueWithScanner(NICK_NAME_DATA, REG_NICKNAME);
+    }
+
+    public void inputNote(){
+        inputSurname();
+        inputNickName();
     }
 
     public String getNickName() {
