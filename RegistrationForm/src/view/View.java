@@ -16,8 +16,8 @@ public class View {
      * This method encapsulates the output of a message to the console
      * @param message - message to output to the console
      */
-    public void printMessage(String message){
-        System.out.println(message);
+    public void printMessage(String...message){
+        System.out.println(concatenateStrings(message));
     }
 
     private String concatenateStrings(String ... strings){
@@ -25,15 +25,13 @@ public class View {
     }
 
     public void printWrongMessage(String message){
-        printMessage(concatenateStrings(
-                messageManager.getString(WRONG_INPUT_DATA),
+        printMessage(messageManager.getString(WRONG_INPUT_DATA),
                 messageManager.getString(INPUT_STRING_DATA),
-                messageManager.getString(message)));
+                messageManager.getString(message));
     }
 
     public void printStringInput(String message){
-        printMessage(concatenateStrings(
-                messageManager.getString(INPUT_STRING_DATA),
-                messageManager.getString(message)));
+        printMessage(messageManager.getString(INPUT_STRING_DATA),
+                messageManager.getString(message));
     }
 }

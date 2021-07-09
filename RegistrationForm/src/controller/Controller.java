@@ -7,6 +7,8 @@ import model.Model;
 
 import java.util.Scanner;
 
+import static view.TextConstant.*;
+
 /**
  * This class is used to receive data from a main.view, validate the received data and pass it to the model
  * @see View
@@ -41,8 +43,8 @@ public class Controller {
             }
             catch (NotUniqueException ex){
                 ex.printStackTrace();
-                System.out.println(inputNoteBook.getNickName() +
-                        " is not unique! Enter new nickname");
+                view.printMessage(inputNoteBook.getNickName(),
+                        View.messageManager.getString(NOT_UNIQUE_NICKNAME));
                 inputNoteBook.inputNickName();
             }
         }
